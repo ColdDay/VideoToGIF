@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>视频转GIF</title>
+	<meta charset="utf-8">
+  <meta name="description" content="视频转GIF">
+	<script type="text/javascript" src="jquery.min.js"></script>
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="index.css">
+<div class="main">
+  <div class="main-content">
+    <img id="mainImg">
+		<video id="play"></video>
+		<div class="operate-area">
+				<input type="text" placeholder="宽度" value="300" id ="gifWidth" onchange="onSizeChange(this)"/>
+				<label class="btn btn-gray select" for="selectVideo">选择视频<input type="file" name="filie" class="upload-file" id="selectVideo"></label>
+				<!-- <button class="btn btn-primary download" onclick="download()" id="downloadGif">下载 GIF</button> -->
+		</div>
+		<p class="tips">右键存储图片</p>
+  </div>
+</div>
+
+<script type="text/javascript" src="gifshot.min.js"></script>
+<script type="text/javascript" src="index.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
