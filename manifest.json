@@ -1,10 +1,10 @@
 {
-    "name": "Hello Extensions",
-   "description" : "Hello world Extension",
-   "version": "1.0",
-   "manifest_version": 2,
-   "browser_action": {
-     "default_popup": "index.html",
-     "default_icon": "mp4ToGif.png"
-   }
+    "name": "视频转GIF",
+    "description" : "视频转GIF",
+    "version": "1.1",
+     "manifest_version": 2,
+    "browser_action": {
+        "default_popup": "index.html",
+        "default_icon": "mp4ToGif.png"
+    }
  }

@@ -13,7 +13,7 @@ function getLoopImg() {
 		canvas.height = GLOBAL_W / GLOBAL_SCALE * devicePixelRatio;
 		context = canvas.getContext('2d');
 		context.imageSmoothingEnabled = false;
-		context.drawImage(playVideo, 0, 0, playVideo.offsetWidth,  playVideo.offsetHeight,0,0,canvas.width, canvas.height);
+		context.drawImage(playVideo, 0, 0, playVideo.videoWidth,  playVideo.videoHeight,0,0,canvas.width, canvas.height);
 		fpsList.push(canvas)
 		var img = document.createElement("img");
 		img.src = canvas.toDataURL();
@@ -21,7 +21,6 @@ function getLoopImg() {
 		if(playVideo.ended) {
 			showGIF();
 		}else{
-			console.log(11,playVideo.currentTime)
 			setTimeout(function() {
 				getLoopImg();
 			},100)
@@ -40,21 +39,23 @@ function onSizeChange(e) {
 $('#selectVideo').on('change', function(e){
 	if(e.target.type != 'file') return;
 	fpsList = []
-	gifImgElement.src = loadingGif;
 	var video = e.target.files[0] || e.dataTransfer.files[0];
-	// var playVideo = document.getElementById('play');
-	// document.getElementById('play').src = URL.createObjectURL(video);
-	// document.getElementById('play').play();
+	$(gifImgElement).hide();
+	$(playVideo).show();
+	playVideo.width = GLOBAL_W
 	playVideo.src = URL.createObjectURL(video);
 	playVideo.playbackRate = 1
 	playVideo.play();
+	$('#status').text('取图中,请等待视频播放完成...')
 	getLoopImg();
 
 })
 
 
 function showGIF() {
-	gifImgElement.src = loadingGif;
+	$('#status').text('正在生成GIF...')
+	$(gifImgElement).show().attr('src', loadingGif);
+	$(playVideo).hide()
 	gifshot.createGIF({
 		'images': fpsList,
 		'gifWidth' : GLOBAL_W,
@@ -63,7 +64,8 @@ function showGIF() {
 	},function(obj) {
 	  if(!obj.error) {
 	    var image = obj.image;
-	    gifImgElement.src = image;
+		gifImgElement.src = image;
+		$('#status').text('已完成、右键存储图片')
 	  }
 	  $('#downloadGif').show();	
 	});

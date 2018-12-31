@@ -23,8 +23,8 @@
     position:absolute;opacity:0;height:0
 }
 video{
-    position:fixed;
-    top:-10000px;
+    margin: 0 auto;
+    display: none;
 }
 .download{
     display: none;
@@ -36,7 +36,7 @@ video{
 .operate-area{
     position: relative;
     width: 500px;
-    padding: 20px;
+    padding: 10px 20px;
     background: #fff;
     text-align: center;
     overflow: auto;
@@ -52,4 +52,7 @@ video{
     color: #929292;
     font-size: 14px;
     font-weight: 400;
+}
+.waring{
+    color: red;
 }
