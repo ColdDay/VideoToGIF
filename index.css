@@ -56,3 +56,11 @@ video{
 .waring{
     color: red;
 }
+.flex-box{
+    display: flex;
+    margin: 0 auto;
+}
+.flex-box .text-list{
+    width: 100px;
+
+}

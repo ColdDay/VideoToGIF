@@ -50,6 +50,17 @@ $('#selectVideo').on('change', function(e){
 	getLoopImg();
 
 })
+$('#play').on('click', function(e){
+	
+	
+
+})
+$('#gifWidth').on('change', function(e){
+	
+	GLOBAL_W = e.value || 200;
+	showGIF()
+
+})
 
 
 function showGIF() {
