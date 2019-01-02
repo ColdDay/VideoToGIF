@@ -1,3 +1,8 @@
+ul,li{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
 .btn{
     display:inline-block;
     padding:8px;
@@ -56,11 +61,42 @@ video{
 .waring{
     color: red;
 }
-.flex-box{
-    display: flex;
+.text-btn{
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+.text-btn:active{
+    transform: scale(1.1)
+}
+.text-input{
+    width: 190px;
+    height: 36px;
+    box-sizing: border-box;
+    padding: 0 8px;
+}
+.text-list{
+    padding-top: 20px;
+}
+.text-list li{
+    text-align: center;
     margin: 0 auto;
 }
-.flex-box .text-list{
-    width: 100px;
-
+.text-btn.start{
+    background: url('text-start.jpg') no-repeat center;
+    background-size: cover;
+}
+.text-btn.end{
+    background: url('text-end.jpg') no-repeat center;
+    background-size: cover;
+}
+.time-input{
+    width: 50px;
+    height: 36px;
+    box-sizing: border-box;
+    padding: 0 8px;
 }
