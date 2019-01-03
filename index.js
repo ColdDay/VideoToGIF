@@ -8,7 +8,6 @@ var fpsList = []
 var gifImgList = []
 function getLoopImg() {
 	if (playVideo.currentTime > 0) {
-		
 		var canvas = document.createElement("canvas");
 		canvas.curTime = playVideo.currentTime;
 		GLOBAL_SCALE = playVideo.offsetWidth / playVideo.offsetHeight;
@@ -18,9 +17,9 @@ function getLoopImg() {
 		context.imageSmoothingEnabled = false;
 		context.drawImage(playVideo, 0, 0, playVideo.videoWidth,  playVideo.videoHeight,0,0,canvas.width, canvas.height);
 		fpsList.push(canvas)
-		
 		if(playVideo.ended) {
-			showGIF();
+			// showGIF();
+			// console.log('取图结束')
 		}else{
 			setTimeout(function() {
 				getLoopImg();
@@ -33,16 +32,15 @@ function getLoopImg() {
 	}
 	
 }
-function onSizeChange(e) {
-	GLOBAL_W = e.value || 200;
-	showGIF()
-}
+
 $('#selectVideo').on('change', function(e){
 	if(e.target.type != 'file') return;
 	fpsList = []
 	var video = e.target.files[0] || e.dataTransfer.files[0];
 	$(gifImgElement).hide();
 	$(playVideo).show();
+	$('.text-list').empty();
+	addTextInput();
 	playVideo.width = GLOBAL_W
 	playVideo.src = URL.createObjectURL(video);
 	playVideo.playbackRate = 1
@@ -57,33 +55,46 @@ $('#play').on('click', function(e){
 
 
 })
+$('#createGif').on('click', function(e){
+	$(gifImgElement).show().attr('src', loadingGif);
+	showGIF()
+})
+
 $('#gifWidth').on('change', function(e){
 	
 	GLOBAL_W = e.value || 200;
+	$(gifImgElement).show().attr('src', loadingGif);
 	showGIF()
 
 })
 $('body').on('click', '.text-btn', function(){
-	console.log(playVideo.currentTime)
 	var curTime = playVideo.currentTime.toFixed(2)
 	var $this = $(this)
 	if ($(this).hasClass('start')) {
-		console.log('开始')
 		$this.removeClass('start').addClass('end');
 		$this.parent().find('.time-input.start').val(curTime)
+		addTextInput()
 	} else if($(this).hasClass('end')) {
-		console.log('结束')
 		$this.removeClass('end')
 		$this.parent().find('.time-input.end').val(curTime)
 	}
 })
-
+$('body').on('click', '.delete-text', function(){
+	$(this).closest('.time-split').remove()
+})
 
 function showGIF() {
+	gifImgList = []
+	console.log('开始计时000000')
+	var curTime = new Date().getTime()
 	drawText()
+	console.log((new Date().getTime() - curTime)/1000)
 	$('#status').text('正在生成GIF...')
-	$(gifImgElement).show().attr('src', loadingGif);
+	
 	$(playVideo).hide()
+	console.log('开始计时111111')
+	var curTime1 = new Date().getTime()
+	
 	gifshot.createGIF({
 		'images': gifImgList,
 		'gifWidth' : GLOBAL_W,
@@ -95,26 +106,43 @@ function showGIF() {
 		gifImgElement.src = image;
 		$('#status').text('已完成、右键存储图片')
 	  }
+	  console.log((new Date().getTime() - curTime1)/1000)
 	  $('#downloadGif').show();	
+	});
+}
+function addTextInput() {
+	var index = $('.time-split').length + 1
+	var html = '<li class="time-split">' +
+					'<span class="text-btn start"></span> ' +
+					'<input type="text" class="text-input" placeholder="第'+index+'句话"/> ' + 
+					'<input type="text" class="time-input start" placeholder="开始"/> - '+
+					'<input type="text" class="time-input end" placeholder="结束"/> ' +
+					'<input type="text" class="color-input" placeholder="颜色"/> ' +
+					'<input type="number" class="size-input" placeholder="大小" min="16" value="16"/> ' +
+					'<span class="delete-text" ></span> ' +
+				'</li>'
+	$('.text-list').append(html)
+	$('.time-split').last().find('.color-input').minicolors({
+		defaultValue: '#ffffff',
 	});
 }
 function drawText() {
 	var timeList = []
 	$('.time-split').each(function(index, item){
-		console.log(item)
 		var text = $(item).find('.text-input').val();
 		var start = $(item).find('.time-input.start').val() * 1;
 		var end = $(item).find('.time-input.end').val() * 1;
+		var color = $(item).find('.color-input').val();
+		var size = $(item).find('.size-input').val();
 		timeList.push({
 			text: text,
 			start: start,
 			end: end,
-			color: '',
-			size: '40px',
+			color: color,
+			size: size + 'px',
 			font: 'Georgia'
 		})
 	})
-	console.log('timeList', timeList)
 	for(var i=0; i< fpsList.length; i++) {
 		(function(index){
 			var curCanvas = fpsList[index];
@@ -124,8 +152,10 @@ function drawText() {
 				return curCanvas.curTime > item.start  && curCanvas.curTime < item.end 
 			})
 			if (index !== -1) {
+				context.textAlign="center";
 				context.font= timeList[index].size + ' ' + timeList[index].font;
-				context.fillText(timeList[index].text, 10,50);
+				context.fillStyle= timeList[index].color;
+				context.fillText(timeList[index].text, curCanvas.width/2,curCanvas.height/2);
 			}			
 			var img = document.createElement("img");
 			img.src = curCanvas.toDataURL();

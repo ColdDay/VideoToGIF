@@ -17,12 +17,7 @@
 					<video id="play"></video>
 			</div>
 			<ul class="text-list">
-				<li class="time-split">
-					<span class="text-btn start"></span>
-					<input type="text" class="text-input"/>
-					<input type="text" class="time-input start" placeholder="开始"/> - 
-					<input type="text" class="time-input end" placeholder="结束"/>
-				</li>
+				
 			</ul>
 		</div>
 		
@@ -30,13 +25,15 @@
 		<div class="operate-area">
 				<input type="text" placeholder="宽度" value="300" max="800" id ="gifWidth"/>
 				<label class="btn btn-gray select" for="selectVideo">选择视频<input type="file" name="filie" class="upload-file" id="selectVideo"></label>
-				<!-- <button class="btn btn-primary download" onclick="download()" id="downloadGif">下载 GIF</button> -->
+				<button class="btn btn-primary" id="createGif">下载 GIF</button>
 		</div>
 		<p class="tips waring">备注：上传视频尽量控制时长不超过30S，插件不做限制，视频越大，转换时间越长</p>
   </div>
 </div>
 
 <script type="text/javascript" src="gifshot.min.js"></script>
+<link rel="stylesheet" media="screen" type="text/css" href="jquery.minicolors.css" />  
+<script src="jquery.minicolors.min.js"></script>
 <script type="text/javascript" src="index.js"></script>
 </body>
 </html>

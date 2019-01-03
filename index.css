@@ -4,13 +4,16 @@ ul,li{
     padding: 0;
 }
 .btn{
-    display:inline-block;
-    padding:8px;
-    font-size:14px;
-    color:#343a40;
-    background:#fff;
-    border-radius:5px;
-    cursor:pointer;
+    display: inline-block;
+    padding: 0 8px;
+    font-size: 12px;
+    color: #343a40;
+    background: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 26px;
+    box-sizing: border-box;
+    line-height: 26px;
 }
 .btn.btn-gray{
     border:1px solid #343a40;color:#343a40
@@ -48,7 +51,7 @@ video{
     margin: 0 auto;
 }
 #gifWidth{
-    height: 36px;
+    height: 26px;
     padding: 8px;
     box-sizing: border-box;
 }
@@ -63,8 +66,8 @@ video{
 }
 .text-btn{
     display: inline-block;
-    width: 36px;
-    height: 36px;
+    width: 26px;
+    height: 26px;
     border-radius: 4px;
     vertical-align: middle;
     cursor: pointer;
@@ -75,7 +78,7 @@ video{
 }
 .text-input{
     width: 190px;
-    height: 36px;
+    height: 26px;
     box-sizing: border-box;
     padding: 0 8px;
 }
@@ -94,9 +97,24 @@ video{
     background: url('text-end.jpg') no-repeat center;
     background-size: cover;
 }
-.time-input{
-    width: 50px;
-    height: 36px;
+.time-split {
+    margin-bottom: 8px !important;
+}
+.time-input,.size-input{
+    width: 40px;
+    height: 26px;
     box-sizing: border-box;
-    padding: 0 8px;
+    padding: 0 4px;
+}
+.size-input{
+    
+}
+.delete-text{
+    display: inline-block;
+    width: 20px;
+    height: 20px;;
+    background: url('delete.png') no-repeat center;
+    background-size: cover;
+    vertical-align: middle;
+    cursor: pointer;
 }
