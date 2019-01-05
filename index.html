@@ -14,7 +14,7 @@
 		<div class="flex-box">
 			<div class="flex">
 					<img id="mainImg">
-					<video id="play"></video>
+					<video id="play" controls></video>
 					<div class="loading">
 						<span></span>
 						<span></span>
@@ -23,19 +23,51 @@
 						<span></span>
 					</div>
 			</div>
-			<ul class="text-list">
-				
-			</ul>
+			<p class="tips" id="status"></p>
+			<ul class="text-list"></ul>
+		</div>
+		<div class="row">
+				<button class="btn btn-gray" id="addText">添加文字</button>
+				<button class="btn btn-primary" id="startGet">开始取图</button>
+				<button class="btn btn-primary" id="getOver">取图完成</button>
 		</div>
 		
-		<p class="tips" id="status"></p>
 		<div class="operate-area">
 				<input type="text" placeholder="宽度" value="300" max="800" id ="gifWidth"/>
-				<label class="btn btn-gray select" for="selectVideo">选择视频<input type="file" name="filie" class="upload-file" id="selectVideo"></label>
-				<button class="btn btn-primary" id="createGif">下载 GIF</button>
+				<label class="btn btn-gray select" for="selectVideo">选择视频<input type="file" accept="video/*" name="filie" class="upload-file" id="selectVideo"></label>
+				<button class="btn btn-primary" id="createGif">生成 GIF</button>
 		</div>
-		<p class="tips waring">备注：上传视频尽量控制时长不超过30S，插件不做限制，视频越大，转换时间越长</p>
-  </div>
+		<p class="tips waring">备注：上传视频尽量控制时长不超过 15 S，插件不做限制，视频越大，转换时间越长</p>
+	</div>
+	<h3>使用教程</h3>
+	<ul class="tutorial">
+		<li>
+			<h4>第 1 步</h4>
+			<p>点击 <button class="btn btn-gray" disabled>选择视频</button> 按钮，选取要转换的视频</p>
+			<p>GIF宽度默认是300，可以点击宽度输入框自行修改，最大不超过 800</p>
+		</li>
+		<li>
+				<h4>第 2 步（开始取图）</h4>
+				<p>点击 <button class="btn btn-primary" disabled>开始取图</button> 按钮，开始播放视频，自动抓取GIF</p>
+				<p>如果需要在GIF上添加文字，可以在取图过程中，点击左侧 <button class="text-btn start" disabled></button> 定位图标，按钮会自动获取当前时间，先后点击两次分别获取文字开始标注时间和结束时间</p>
+				<p>视频播放完也可以自自行输入修改文字的标注时间范围</p>
+			</li>
+		<li>
+			<h4>第 3 步（标注文字）</h4>
+			<p>点击 <button class="btn btn-gray" disabled>添加文字</button> 会自动添加一行文字输入区域</p>
+			<p>在取图过程中，可以点击左侧 <button class="text-btn start" disabled></button> ，按钮会自动获取当前时间，先后点击两次分别获取文字开始标注时间和结束时间</p>
+			<p>视频播放完也可以自自行输入修改文字的标注时间范围、文字内容、颜色、大小、位置等</p>
+		</li>
+		<li>
+			<h4>第 4 步（取图完成）</h4>
+			<p>点击 <button class="btn btn-primary" disabled>取图完成</button> 或者 视频播放完成 后会结束取图，出现 <button class="btn btn-primary" disabled>生成GIF</button> 按钮</p>
+		</li>
+		<li>
+			<h4>第 5 步（生成GIF）</h4>
+			<p>点击 <button class="btn btn-primary" disabled>生成GIF</button> ，等待片刻即可完成，右键可以存储GIF到本地</p>
+			<p>如果想做文字的修改，可以直接修改后重新点击 <button class="btn btn-primary" disabled>生成GIF</button> ，插件会再次生成新的GIF</p>
+		</li>
+	</ul>
 </div>
 
 <script type="text/javascript" src="gifshot.min.js"></script>

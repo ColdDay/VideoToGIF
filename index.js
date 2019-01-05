@@ -1,30 +1,30 @@
-var gifImgElement = document.getElementById('mainImg')
-var playVideo = document.getElementById('play')
+var GIF_IMG = document.getElementById('mainImg')
+var PLAY_VIDEO = document.getElementById('play')
 var GLOBAL_W = document.getElementById('gifWidth').value
 var GLOBAL_SCALE = 1
-var loadingGif = 'data:image/gif;base64,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'
-var fpsList = []
-var gifImgList = []
+var FPS_LIST = []
+var GIF_IMG_LIST = []
 function getLoopImg () {
-  if (playVideo.currentTime > 0) {
+  if (PLAY_VIDEO.currentTime > 0) {
     var canvas = document.createElement('canvas')
-    canvas.curTime = playVideo.currentTime
-    GLOBAL_SCALE = playVideo.offsetWidth / playVideo.offsetHeight
+    canvas.curTime = PLAY_VIDEO.currentTime
+    GLOBAL_SCALE = PLAY_VIDEO.offsetWidth / PLAY_VIDEO.offsetHeight
     canvas.width = GLOBAL_W * window.devicePixelRatio
     canvas.height = GLOBAL_W / GLOBAL_SCALE * window.devicePixelRatio
     var context = canvas.getContext('2d')
     context.imageSmoothingEnabled = false
-    context.drawImage(playVideo, 0, 0, playVideo.videoWidth, playVideo.videoHeight, 0, 0, canvas.width, canvas.height)
+    context.drawImage(PLAY_VIDEO, 0, 0, PLAY_VIDEO.videoWidth, PLAY_VIDEO.videoHeight, 0, 0, canvas.width, canvas.height)
     var img = document.createElement('img')
     img.src = canvas.toDataURL()
-    img.time = playVideo.currentTime
+    img.time = PLAY_VIDEO.currentTime
     img.width = canvas.width
     img.height = canvas.height
-    fpsList.push(img)
-    if (playVideo.ended) {
-      // showGIF();
-      // console.log('取图结束')
-    } else {
+    FPS_LIST.push(img)
+    if (PLAY_VIDEO.ended) {
+		$('#getOver').click()
+    } else if(PLAY_VIDEO.paused) {
+
+	} else {
       setTimeout(function () {
         getLoopImg()
       }, 100)
@@ -38,42 +38,66 @@ function getLoopImg () {
 
 $('#selectVideo').on('change', function (e) {
   if (e.target.type != 'file') return
-  fpsList = []
+  FPS_LIST = []
   var video = e.target.files[0] || e.dataTransfer.files[0]
-  $(gifImgElement).hide()
-  $(playVideo).show()
+  $(GIF_IMG).hide()
+  $(PLAY_VIDEO).show()
   $('.text-list').empty()
+  $('#startGet').show()
+  $('#addText').show()
+  PLAY_VIDEO.width = GLOBAL_W
+  PLAY_VIDEO.src = URL.createObjectURL(video)
+  PLAY_VIDEO.playbackRate = 1
   addTextInput()
-  playVideo.width = GLOBAL_W
-  playVideo.src = URL.createObjectURL(video)
-  playVideo.playbackRate = 1
-  playVideo.play()
-  $('#status').text('取图中,请等待视频播放完成...')
-  getLoopImg()
 })
-$('#play').on('click', function (e) {
+function startGet(){
+	$('#status').text('取图中...')
+	addTextInput()
+	PLAY_VIDEO.play()
+	getLoopImg()
+}
+$('#startGet').on('click', function (e) {
+	startGet()
+	$(this).hide()
+	$('#getOver').show()
+})
+$('#getOver').on('click', function (e) {
+	$('#getOver').hide()
+	$('#createGif').show()
+	PLAY_VIDEO.pause()
+	$('#status').text('取图完成')
+})
 
-})
 $('#createGif').on('click', function (e) {
 	$('.loading').show()
-  showGIF()
+	$(GIF_IMG).hide()
+	$('#status').text('正在生成GIF...')
+  	$(PLAY_VIDEO).hide()
+	setTimeout(function(){
+		showGIF()
+	},10)
+})
+$('#addText').on('click', function (e) {
+	addTextInput()
 })
 
 $('#gifWidth').on('change', function (e) {
 	GLOBAL_W = e.value || 200
-	$('.loading').show()
-  $(gifImgElement).hide()
-  showGIF()
+	if (GIF_IMG_LIST.length) {
+		$('.loading').show()
+		$(GIF_IMG).hide()
+		showGIF()
+	}
 })
 $('body').on('click', '.text-btn', function () {
-  var curTime = playVideo.currentTime.toFixed(2)
+  var curTime = PLAY_VIDEO.currentTime.toFixed(2)
   var $this = $(this)
   if ($(this).hasClass('start')) {
-    $this.removeClass('start').addClass('end')
+    $this.removeClass('start').addClass('on')
     $this.parent().find('.time-input.start').val(curTime)
     addTextInput()
-  } else if ($(this).hasClass('end')) {
-    $this.removeClass('end')
+  } else if ($(this).hasClass('on')) {
+    $this.removeClass('on').addClass('end')
     $this.parent().find('.time-input.end').val(curTime)
   }
 })
@@ -82,25 +106,20 @@ $('body').on('click', '.delete-text', function () {
 })
 
 function showGIF () {
-	$(gifImgElement).hide()
-  gifImgList = []
+  GIF_IMG_LIST = []
   var curTime = new Date().getTime()
   drawText()
-  $('#status').text('正在生成GIF...')
-
-  $(playVideo).hide()
   var curTime1 = new Date().getTime()
-
   gifshot.createGIF({
-    'images': gifImgList,
+    'images': GIF_IMG_LIST,
     'gifWidth': GLOBAL_W,
     'gifHeight': GLOBAL_W / GLOBAL_SCALE,
     'frameDuration': 1
   }, function (obj) {
 	  if (!obj.error) {
 	    var image = obj.image
-			gifImgElement.src = image
-			$(gifImgElement).show()
+			GIF_IMG.src = image
+			$(GIF_IMG).show()
 			$('.loading').hide()
       $('#status').text('已完成、右键存储图片')
 	  }
@@ -110,17 +129,29 @@ function showGIF () {
 function addTextInput () {
   var index = $('.time-split').length + 1
   var html = '<li class="time-split">' +
-			'<span class="text-btn start"></span> ' +
+			'<span class="text-btn start" title="点击可以自动选择视频当前的时间，再次选择结束选择"></span> ' +
 			'<input type="text" class="text-input" placeholder="第' + index + '句话"/> ' +
-			'<input type="text" class="time-input start" placeholder="开始"/> - ' +
-			'<input type="text" class="time-input end" placeholder="结束"/> ' +
-			'<input type="text" class="color-input" placeholder="颜色"/> ' +
-			'<input type="number" class="size-input" placeholder="大小" min="16" value="36"/> ' +
+			'<input type="text" class="time-input start" placeholder="开始时间"/>' +
+			'<span class="split">-</span>' +
+			'<input type="text" class="time-input end" placeholder="结束时间"/> ' +
+			'<input type="text" class="color-input" placeholder="文字颜色"/> ' +
+			'<input type="number" class="size-input" placeholder="文字大小" min="16" value="36"/> ' +
+			'<select class="positon-select" title="文字位置">'+
+				'<option value="1-1">左上</option>'+
+				'<option value="1-2">上</option>'+
+				'<option value="1-3">右上</option>'+
+				'<option value="2-1">左中</option>'+
+				'<option value="2-2">中</option>'+
+				'<option value="2-3">右中</option>'+
+				'<option value="3-1">左下</option>'+
+				'<option value="3-2" selected>下</option>'+
+				'<option value="3-3">右下</option>'+
+			'</select> '+
 			'<span class="delete-text" ></span> ' +
 		'</li>'
   $('.text-list').append(html)
   $('.time-split').last().find('.color-input').minicolors({
-    defaultValue: 'red'
+    defaultValue: '#FFF'
   })
 }
 function drawText () {
@@ -130,19 +161,21 @@ function drawText () {
     var start = $(item).find('.time-input.start').val() * 1
     var end = $(item).find('.time-input.end').val() * 1
     var color = $(item).find('.color-input').val()
-    var size = $(item).find('.size-input').val()
+	var size = $(item).find('.size-input').val()
+	var positon = $(item).find('.positon-select')[0].value
     timeList.push({
       text: text,
       start: start,
       end: end,
       color: color,
       size: size + 'px',
-      font: 'Georgia'
+	  font: 'Georgia',
+	  positon: positon
     })
   })
-  for (var i = 0; i < fpsList.length; i++) {
+  for (var i = 0; i < FPS_LIST.length; i++) {
     (function (index) {
-      var img = fpsList[index]
+      var img = FPS_LIST[index]
       var canvas = document.createElement('canvas')
       canvas.width = img.width
       canvas.height = img.height
@@ -153,20 +186,25 @@ function drawText () {
         return img.time > item.start && img.time < item.end
       })
       if (index !== -1) {
-        context.textAlign = 'center'
-        context.font = timeList[index].size + ' ' + timeList[index].font
-        context.fillStyle = timeList[index].color
-        context.fillText(timeList[index].text, canvas.width / 2, canvas.height / 2)
+		  	var item = timeList[index]
+        	context.textAlign = 'center'
+			context.font = item.size + ' ' + item.font
+			context.fillStyle = item.color
+			var w = canvas.width/3
+			var h = canvas.height/3
+			var row = item.positon.split('-')[0]
+			var col = item.positon.split('-')[1]
+			context.fillText(item.text, col * w - w/2, row * h - h/2)
       }
       var exportImg = document.createElement('img')
       exportImg.src = canvas.toDataURL()
-      gifImgList.push(exportImg)
+      GIF_IMG_LIST.push(exportImg)
     })(i)
   }
 }
 function download () {
   // base64 string
-  var base64str = gifImgElement.src.split('base64,')[1]
+  var base64str = GIF_IMG.src.split('base64,')[1]
 
   // decode base64 string, remove space for IE compatibility
   var binary = atob(base64str.replace(/\s/g, ''))
