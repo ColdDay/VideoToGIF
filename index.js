@@ -45,6 +45,7 @@ $('#selectVideo').on('change', function (e) {
   $('.text-list').empty()
   $('#startGet').show()
   $('#addText').show()
+  $('#selectTip').text('重新选择')
   PLAY_VIDEO.width = GLOBAL_W
   PLAY_VIDEO.src = URL.createObjectURL(video)
   PLAY_VIDEO.playbackRate = 1
@@ -82,7 +83,8 @@ $('#addText').on('click', function (e) {
 })
 
 $('#gifWidth').on('change', function (e) {
-	GLOBAL_W = e.value || 200
+	GLOBAL_W = e.target.value || 200
+	PLAY_VIDEO.width = GLOBAL_W
 	if (GIF_IMG_LIST.length) {
 		$('.loading').show()
 		$(GIF_IMG).hide()
