@@ -1,5 +1,5 @@
 # mp4ToGif
-![](https://user-gold-cdn.xitu.io/2019/1/5/1681d4369f061a13?w=300&h=119&f=gif&s=810002 "视频转GIF")   
+![](https://raw.githubusercontent.com/ColdDay/mp4ToGif/master/demo-1.gif "视频转GIF")   
 
 视频转GIF在线使用网址 [https://coldday.github.io/mp4ToGif/](https://coldday.github.io/mp4ToGif/ "视频转GIF")
 
