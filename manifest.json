@@ -1,7 +1,7 @@
 {
     "name": "视频转GIF",
     "description" : "视频转GIF",
-    "version": "1.2",
+    "version": "1.4",
      "manifest_version": 2,
     "browser_action": {
         "default_popup": "index.html",
