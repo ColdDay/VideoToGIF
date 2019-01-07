@@ -4,7 +4,7 @@
 	<title>视频转GIF</title>
 	<meta charset="utf-8">
   <meta name="description" content="视频转GIF">
-	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" src="plugins/jquery.min.js"></script>
 </head>
 <body>
 <link rel="stylesheet" type="text/css" href="index.css">
@@ -33,7 +33,7 @@
 		</div>
 		
 		<div class="operate-area">
-				<input type="text" placeholder="宽度" value="300" max="800" id ="gifWidth"/>
+				<input type="number" placeholder="宽度" value="300" max="800" id ="gifWidth"/>
 				<label class="btn btn-gray select" for="selectVideo"><span id="selectTip">选择视频</span><input type="file" accept="video/*" name="filie" class="upload-file" id="selectVideo"></label>
 				<button class="btn btn-primary" id="createGif">生成 GIF</button>
 		</div>
@@ -70,10 +70,10 @@
 	</ul>
 </div>
 
-<script type="text/javascript" src="gifshot.min.js"></script>
-<link rel="stylesheet" media="screen" type="text/css" href="jquery.minicolors.css" />  
-<script src="jquery.minicolors.min.js"></script>
-<script type="text/javascript" src="index.js"></script>
+<script type="text/javascript" src="plugins/gifshot.min.js"></script>
+<link rel="stylesheet" media="screen" type="text/css" href="plugins/jquery.minicolors.css" />  
+<script src="plugins/jquery.minicolors.min.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
 </body>
 </html>
 
