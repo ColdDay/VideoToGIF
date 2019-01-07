@@ -167,16 +167,16 @@ video{
 }
 
 .text-btn.start{
-    background: url('position-blue.png') no-repeat center;
+    background: url('../images/position-blue.png') no-repeat center;
     background-size: cover;
 }
 .text-btn.on{
-    background: url('position-blue.png') no-repeat center;
+    background: url('../images/position-blue.png') no-repeat center;
     background-size: cover;
     animation: textAni 1s infinite linear;
 }
 .text-btn.end{
-    background: url('position-gray.png') no-repeat center;
+    background: url('../images/position-gray.png') no-repeat center;
     background-size: cover;
 }
 .time-split {
@@ -198,7 +198,7 @@ video{
     display: inline-block;
     width: 20px;
     height: 20px;;
-    background: url('delete.png') no-repeat center;
+    background: url('../images/delete.png') no-repeat center;
     background-size: cover;
     vertical-align: middle;
     cursor: pointer;
