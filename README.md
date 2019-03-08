@@ -1,4 +1,4 @@
-![](https://user-gold-cdn.xitu.io/2019/1/5/1681d98ce9143eed?w=300&h=119&f=gif&s=810002 "视频转GIF")
+![](https://github.com/ColdDay/mp4ToGif/blob/master/images/%E6%9D%A8%E8%B6%85%E8%B6%8A.gif?raw=true "视频转GIF")
 
 > 在线体验 [https://coldday.github.io/mp4ToGif/](https://coldday.github.io/mp4ToGif/ "视频转GIF")
 
