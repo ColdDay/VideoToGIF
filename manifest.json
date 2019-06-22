@@ -1,10 +1,30 @@
 {
-    "name": "视频转GIF",
-    "description" : "视频转GIF",
-    "version": "1.4",
-     "manifest_version": 2,
+    "name": "热点配置",
+    "description" : "热点配置",
+    "version": "1.0",
+    "manifest_version": 2,
     "browser_action": {
-        "default_popup": "index.html",
-        "default_icon": "images/mp4ToGif.png"
-    }
+      "default_popup": "popup.html",
+      "default_icon": "images/mp4ToGif.png"
+    },
+    "background":
+    {
+      "scripts": ["js/background.js"]
+    },
+    "content_scripts": [
+      {
+        "js":["js/event_init.js", "js/selector.js","js/test.js"],
+        "css":["css/background.css"],
+        "matches": ["<all_urls>"]
+      }
+    ],
+    "permissions":
+    [
+      "contextMenus",
+      "tabs",
+      "webRequest",
+      "storage",
+      "http://*/*",
+      "https://*/*"
+    ]
  }
