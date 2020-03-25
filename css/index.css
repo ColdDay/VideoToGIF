@@ -94,7 +94,7 @@ ul,li{
     border:1px solid #343a40;color:#343a40 !important;
 }
 .btn.btn-gray:hover{
-    color:#fff;background-color:#343a40;border-color:#343a40
+    color:#fff !important;background-color:#343a40;border-color:#343a40
 }
 .btn.btn-primary{
     border:1px solid #007bff;color:#007bff !important;
@@ -214,6 +214,6 @@ video{
     padding-left: 20px;
 }
 .minicolors-theme-default .minicolors-input{
-    width: 100px;
-    height: 26px;
+    width: 100px !important;
+    height: 26px !important;
 }
