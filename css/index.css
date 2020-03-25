@@ -193,7 +193,7 @@ video{
 }
 .positon-select{
     height: 26px !important;
-    -webkit-appearance: caret !important;
+    -webkit-appearance: button !important;
 }
 .delete-text{
     display: inline-block;
