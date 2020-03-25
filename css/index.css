@@ -91,7 +91,7 @@ ul,li{
     -webkit-animation-delay:0.8s;
 }
 .btn.btn-gray{
-    border:1px solid #343a40;color:#343a40
+    border:1px solid #343a40;color:#343a40 !important;
 }
 .btn.btn-gray:hover{
     color:#fff;background-color:#343a40;border-color:#343a40
@@ -103,7 +103,7 @@ ul,li{
     color:#fff;background-color:#007bff;border-color:#007bff
 }
 .upload-file{
-    position:absolute;opacity:0;height:0
+    position:absolute;opacity:0;height:0;width:0;
 }
 video{
     margin: 0 auto;
@@ -211,4 +211,8 @@ video{
 }
 .tutorial p{
     padding-left: 20px;
+}
+.minicolors-theme-default .minicolors-input{
+    width: 100px;
+    height: 26px;
 }
